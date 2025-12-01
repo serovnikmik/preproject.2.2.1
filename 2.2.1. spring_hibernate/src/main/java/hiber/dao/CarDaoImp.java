@@ -1,15 +1,11 @@
 package hiber.dao;
 
 import hiber.model.Car;
-import hiber.model.User;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
 import java.util.List;
 
 @Repository
@@ -27,13 +23,9 @@ public class CarDaoImp implements CarDao{
     @Override
     @Transactional
     public List<Car> listCars(){
-        CriteriaBuilder cb = sessionFactory.getCurrentSession().getCriteriaBuilder();
-        CriteriaQuery<Car> cq = cb.createQuery(Car.class);
-        Root<Car> root = cq.from(Car.class);
-        cq.select(root);
-
+        String hql = "from Car";
         return sessionFactory.getCurrentSession()
-                .createQuery(cq).getResultList();
+                .createQuery(hql, Car.class).getResultList();
     }
 
 }
