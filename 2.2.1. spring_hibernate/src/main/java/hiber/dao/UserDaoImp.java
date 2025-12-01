@@ -29,21 +29,19 @@ public class UserDaoImp implements UserDao {
    @Transactional(readOnly = true)
    @SuppressWarnings("unchecked")
    public List<User> listUsers() {
-      TypedQuery<User> query=sessionFactory.getCurrentSession().createQuery("from User");
-      return query.getResultList();
+      return sessionFactory.getCurrentSession().createQuery("from User").getResultList();
    }
 
    @Override
    @Transactional(readOnly = true)
    public User getUserByCarInfo(String carModel, int carSeries) {
-       String hql = "select u from User u where u.car.model=:carModel and u.car.series=:carSeries";
-
-       List<User> users = sessionFactory.getCurrentSession()
-               .createQuery(hql, User.class)
+       return sessionFactory.getCurrentSession()
+               .createQuery(
+                       "from User u where u.car.model=:carModel and u.car.series=:carSeries",
+                       User.class)
                .setParameter("carModel", carModel)
                .setParameter("carSeries", carSeries)
-               .getResultList();
-       return users.get(0);
+               .getResultList().get(0);
    }
 
 }

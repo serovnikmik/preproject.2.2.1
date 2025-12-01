@@ -82,10 +82,11 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "email='" + email + '\'' +
-                ", lastName='" + lastName + '\'' +
+                "id=" + id +
                 ", firstName='" + firstName + '\'' +
-                ", id=" + id +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", car=" + (car == null ? "null" : car.getId()) +
                 '}';
     }
 }
