@@ -61,8 +61,8 @@ public class MainApp {
        int carSeries = 1;
 
        System.out.println();
-       System.out.println("The user that owns car with model: " + carModel +
-               " and series: " + carSeries + " is user:\n" +
+       System.out.println("The user that owns car with model: \"" + carModel +
+               "\" and series: \"" + carSeries + "\" is user:\n" +
                userService.getUserByCarInfo(carModel, carSeries));
        System.out.println("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-");
 
