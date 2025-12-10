@@ -25,9 +25,8 @@ public class CarDaoImp implements CarDao {
     @Override
     @Transactional
     public List<Car> listCars() {
-        String hql = "from Car";
         return sessionFactory.getCurrentSession()
-                .createQuery(hql, Car.class).getResultList();
+                .createQuery("from Car", Car.class).getResultList();
     }
 
 }
